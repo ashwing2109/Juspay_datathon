@@ -1,6 +1,6 @@
 library(shiny)
 library(tidyverse)
-data <- read.csv("C:/Users/Ashwini/Desktop/New folder (2)/data.csv")
+data <- read.csv("data.csv")
 log<- summarise(group_by(data,mid,pmt,pg,hr), t=sum(t),success = sum(success))
 by_pmt<-summarise(group_by(log,mid,pmt,hr), t=sum(t),success = sum(success))
 by_pmt<- mutate(by_pmt, Date=str_sub(hr,1,10),Hour=strtoi(str_sub(hr,-2,-1)),sr=success*100/t)
